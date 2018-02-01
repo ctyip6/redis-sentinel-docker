@@ -1,0 +1,13 @@
+FROM redis:alpine
+LABEL maintainer="Jimmy Yip (ctyip6@gmail.com)"
+
+RUN apk add --no-cache \
+        curl \
+        bash
+
+ADD docker-entrypoint-single.sh /
+RUN chmod +x /docker-entrypoint-single.sh
+
+EXPOSE 26379
+
+ENTRYPOINT ["/docker-entrypoint-single.sh"]

@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+    sentinel:
+        build: 
+            context: .
+            dockerfile: Dockerfile-single
+        image: redis-sentinel
+        environment:
+            - MASTER_NAME=zwoop_api
+            - QUORUM=1
+            - MASTER=127.0.0.1
+        ports:
+            - 6379:6379
+            - 26379:26379
